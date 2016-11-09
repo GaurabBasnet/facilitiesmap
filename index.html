@@ -47,7 +47,21 @@ function popUp(f,l){
         l.bindPopup(out.join("<br />"));
     }
 }
-var jsonTest = new L.GeoJSON.AJAX(["data/hospital.geojson","data/school.geojson","data/common.geojson","data/govt_office.geojson"],{onEachFeature:popUp}).addTo(m);
+var hospitalJSON = new L.GeoJSON.AJAX(["data/hospital.geojson"],{onEachFeature:popUp}).addTo(m);
+var schoolJSON = new L.GeoJSON.AJAX(["data/school.geojson"],{onEachFeature:popUp}).addTo(m);
+var openspacesJSON = new L.GeoJSON.AJAX(["data/common.geojson"],{onEachFeature:popUp}).addTo(m);
+var govtOfficeJSON = new L.GeoJSON.AJAX(["data/govt_office.geojson"],{onEachFeature:popUp}).addTo(m);
+
+
+var overlayMaps = {
+    "Hospitals": hospitalJSON,
+    "Schools": schoolJSON,
+    "Open Space": openspacesJSON,
+    "Government Offices": govtOfficeJSON	
+};
+
+L.control.layers(null,overlayMaps).addTo(m);
+
 </script>
 
 
