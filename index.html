@@ -9,11 +9,16 @@
       body { height: 100%; margin: 0; padding: 0;}
       #map{ height: 100% }
     </style>
+    <h1 style="color:blue; font-size: 300%"><center><b>FACILITIES MAP OF POKHARA</b></center></h1>
     <link rel="stylesheet" href="css/leaflet.css" />
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.6.4/leaflet.ie.css" />
 <![endif]-->
 
+<p style="text-align: right">
+<a href="../FacilitiesMap/about.html" ><Button onclick="">About</Button></a>
+<a href="../FacilitiesMap/help.html" ><button onclick="">Help</button></a>
+</p>
 <script src="js/leaflet-src.js"></script>
 <script type="text/javascript" src="js/leaflet.ajax.js"></script>
 <script src="js/spin.js"></script>
@@ -46,23 +51,23 @@ var govtCluster = L.markerClusterGroup();
 
 var schoolIcon = L.icon({
 	iconUrl: 'images/school.png',
-	iconSize: [16, 16],
-	iconAnchor: [16, 37],
-	popupAnchor: [0, -28]
+	iconSize: [24, 24],
+	iconAnchor: [16, 20],
+	popupAnchor: [0, -20]
 });
 
 var hospitalIcon = L.icon({
 	iconUrl: 'images/hospital.png',
-	iconSize: [16, 16],
-	iconAnchor: [16, 37],
-	popupAnchor: [0, -28]
+	iconSize: [24, 24],
+	iconAnchor: [16, 20],
+	popupAnchor: [0, -20]
 });
 
 var govtIcon = L.icon({
 	iconUrl: 'images/government.png',
-	iconSize: [16, 16],
-	iconAnchor: [16, 37],
-	popupAnchor: [0, -28]
+	iconSize: [24, 24],
+	iconAnchor: [16, 20],
+	popupAnchor: [0, -20]
 });
 
 
@@ -136,7 +141,7 @@ var overlayMaps = {
     "Government Offices": govtCluster	
 };
 
-L.control.layers(null,overlayMaps).addTo(m);
+L.control.layers(overlayMaps,null).addTo(m);
 
 </script>
 
