@@ -19,9 +19,6 @@
 <script src="js/spin.js"></script>
 <script src="js/leaflet.spin.js"></script>
 
-
-
-
     <title>Pokhara Facilities Map</title>
     </head>
     <body>
@@ -36,6 +33,27 @@ var mq=L.tileLayer(mopt.url,mopt.options);
 
 mq.addTo(m);
 
+var schoolIcon = L.icon({
+	iconUrl: 'images/school.png',
+	iconSize: [32, 37],
+	iconAnchor: [16, 37],
+	popupAnchor: [0, -28]
+});
+
+var hospitalIcon = L.icon({
+	iconUrl: 'images/hospital.png',
+	iconSize: [32, 37],
+	iconAnchor: [16, 37],
+	popupAnchor: [0, -28]
+});
+
+var govtIcon = L.icon({
+	iconUrl: 'images/government.png',
+	iconSize: [32, 37],
+	iconAnchor: [16, 37],
+	popupAnchor: [0, -28]
+});
+
 
 
 function popUp(f,l){
@@ -47,10 +65,19 @@ function popUp(f,l){
         l.bindPopup(out.join("<br />"));
     }
 }
-var hospitalJSON = new L.GeoJSON.AJAX(["data/hospital.geojson"],{onEachFeature:popUp}).addTo(m);
-var schoolJSON = new L.GeoJSON.AJAX(["data/school.geojson"],{onEachFeature:popUp}).addTo(m);
+var hospitalJSON = new L.GeoJSON.AJAX(["data/hospital.geojson"],{
+pointToLayer: function (f,l){
+    return L.marker(l,{icon: hospitalIcon});
+},onEachFeature:popUp}).addTo(m);
+var schoolJSON = new L.GeoJSON.AJAX(["data/school.geojson"],{
+pointToLayer: function (f,l){
+    return L.marker(l,{icon: schoolIcon});
+},onEachFeature:popUp}).addTo(m);
 var openspacesJSON = new L.GeoJSON.AJAX(["data/common.geojson"],{onEachFeature:popUp}).addTo(m);
-var govtOfficeJSON = new L.GeoJSON.AJAX(["data/govt_office.geojson"],{onEachFeature:popUp}).addTo(m);
+var govtOfficeJSON = new L.GeoJSON.AJAX(["data/govt_office.geojson"],{
+pointToLayer: function (f,l){
+    return L.marker(l,{icon: govtIcon});
+},onEachFeature:popUp}).addTo(m);
 
 
 var overlayMaps = {
