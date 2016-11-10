@@ -9,7 +9,7 @@
       body { height: 100%; margin: 0; padding: 0;}
       #map{ height: 100% }
     </style>
-    <h1 style="color:blue; font-size: 300%"><center><b>FACILITIES MAP OF POKHARA</b></center></h1>
+    <h1 style="color:blue; font-size: 200%"><center><b>FACILITIES MAP OF POKHARA</b></center></h1>
     <link rel="stylesheet" href="css/leaflet.css" />
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.6.4/leaflet.ie.css" />
@@ -133,15 +133,14 @@ pointToLayer: function (f,l){
     return L.marker(l,{icon: govtIcon});
 },onEachFeature:govPopUp});
 
-
 var overlayMaps = {
-    "Hospitals": hospitalCluster,
-    "Schools": schoolCluster,
-    "Open Space": openspacesJSON,
-    "Government Offices": govtCluster	
+    "<img src='images/school.png' height='20' width='20'><span class ='schoolJSON'>Schools</span>" : schoolCluster,
+    "<img src='images/hospital.png' height='20' width='20'><span class ='hospitalJSON'>Hospitals</span>": hospitalCluster,
+    "<img src='images/open.png' height='20' width='20'><span class ='openspacesJSON'>Open Spaces</span>": openspacesJSON,
+    "<img src='images/government.png' height='20' width='20'><span class ='govtOfficelJSON'>Government Offices</span>": govtCluster	
 };
 
-L.control.layers(overlayMaps,null).addTo(m);
+L.control.layers(overlayMaps).addTo(m);
 
 </script>
 
